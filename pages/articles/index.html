@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Business Field Theory in action. Applied insights, case studies, and actionable frameworks.">
+  
+  <title>Articles | Auto-Workspace-AI</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../css/design-system.css">
+  
+  <style>
+    .articles-hero {
+      padding: calc(80px + var(--space-2xl)) 0 var(--space-2xl);
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+        linear-gradient(180deg, var(--darker) 0%, var(--black) 100%);
+    }
+    
+    .article-card {
+      padding: var(--space-xl);
+      border-radius: 16px;
+      text-decoration: none;
+      display: block;
+      transition: transform var(--transition-base);
+    }
+    
+    .article-card:hover {
+      transform: translateY(-4px);
+    }
+    
+    .article-meta {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .article-title {
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .article-excerpt {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+    }
+    
+    .article-tags {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+    
+    .article-tag {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      background: rgba(245, 158, 11, 0.2);
+      border-radius: 4px;
+      color: var(--articles-primary);
+    }
+    
+    .featured-article {
+      grid-column: span 2;
+    }
+    
+    @media (max-width: 768px) {
+      .featured-article {
+        grid-column: span 1;
+      }
+    }
+    
+    .coming-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-left: var(--space-sm);
+    }
+    
+    .category-section {
+      margin-top: var(--space-2xl);
+    }
+    
+    .category-title {
+      font-size: 1rem;
+      color: var(--articles-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-base">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="nav-logo">
+        <span style="color: var(--theory-primary);">f</span>(AutoWorkspace)
+      </a>
+      <ul class="nav-links">
+        <li><a href="../theory/index.html" class="nav-link" data-zone="theory">Theory</a></li>
+        <li><a href="index.html" class="nav-link" data-zone="articles" style="color: var(--articles-primary);">Articles</a></li>
+        <li><a href="../../simulators/index.html" class="nav-link" data-zone="simulators">Simulators</a></li>
+        <li><a href="../about/index.html" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Zone Strip -->
+  <div class="zone-strip zone-strip-articles" style="position: fixed; top: 60px; left: 0; right: 0; z-index: 999;"></div>
+
+  <!-- Hero -->
+  <section class="articles-hero">
+    <div class="container">
+      <p class="hero-tagline" style="color: var(--articles-primary);">Applied Insights</p>
+      <h1 class="text-gradient-articles">Articles</h1>
+      <p class="hero-description">
+        Theory meets reality. How Business Field Theory translates to actionable frameworks,
+        real decisions, and measurable outcomes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section class="section">
+    <div class="container">
+      
+      <!-- Featured -->
+      <div class="category-section">
+        <h3 class="category-title">Featured</h3>
+        
+        <div class="grid grid-2" style="gap: var(--space-lg);">
+          
+          <a href="#" class="article-card card card-articles glass-2 card-shadow featured-article">
+            <span class="article-meta">Foundations • Coming Soon</span>
+            <h3 class="article-title">
+              What is Organizational Entropy? (And How to Measure It)
+              <span class="coming-badge">Draft</span>
+            </h3>
+            <p class="article-excerpt">
+              Everyone talks about "technical debt" and "process overhead" — but these are symptoms, not root cause.
+              Organizational entropy (σ) is the unified measure of accumulated misalignment. Here's how to calculate it.
+            </p>
+            <div class="article-tags">
+              <span class="article-tag">σ</span>
+              <span class="article-tag">Measurement</span>
+              <span class="article-tag">Foundations</span>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+      
+      <!-- Strategy -->
+      <div class="category-section">
+        <h3 class="category-title">Strategy & Alignment</h3>
+        
+        <div class="grid grid-2" style="gap: var(--space-lg);">
+          
+          <a href="#" class="article-card card card-articles glass-1 card-shadow">
+            <span class="article-meta">Strategy • Coming Soon</span>
+            <h3 class="article-title">
+              The Alignment Tax: Why Low 𝒜 Costs More Than You Think
+            </h3>
+            <p class="article-excerpt">
+              When strategy and execution diverge, entropy accumulates faster. 
+              The math shows exactly how much this costs.
+            </p>
+            <div class="article-tags">
+              <span class="article-tag">𝒜</span>
+              <span class="article-tag">Strategy</span>
+            </div>
+          </a>
+          
+          <a href="#" class="article-card card card-articles glass-1 card-shadow">
+            <span class="article-meta">Operations • Coming Soon</span>
+            <h3 class="article-title">
+              Lock vs. Flexibility: The Resilience Tradeoff
+            </h3>
+            <p class="article-excerpt">
+              High lock (ℒ) means high resilience — but the equation shows it's inversely 
+              proportional to alignment squared. What does this mean for organizational design?
+            </p>
+            <div class="article-tags">
+              <span class="article-tag">ℒ</span>
+              <span class="article-tag">Operations</span>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+      
+      <!-- Transitions -->
+      <div class="category-section">
+        <h3 class="category-title">Transitions & Value</h3>
+        
+        <div class="grid grid-2" style="gap: var(--space-lg);">
+          
+          <a href="#" class="article-card card card-articles glass-1 card-shadow">
+            <span class="article-meta">Transitions • Coming Soon</span>
+            <h3 class="article-title">
+              The Math Behind Pivots: When Restructuring Becomes Mandatory
+            </h3>
+            <p class="article-excerpt">
+              Transition (Δ) isn't a choice — it's the inevitable result when σ = ℒ.
+              Here's how to predict it and prepare for it.
+            </p>
+            <div class="article-tags">
+              <span class="article-tag">Δ</span>
+              <span class="article-tag">Pivots</span>
+            </div>
+          </a>
+          
+          <a href="#" class="article-card card card-articles glass-1 card-shadow">
+            <span class="article-meta">Value • Coming Soon</span>
+            <h3 class="article-title">
+              Value is Crystallized Misalignment: The ρ_q Paradox
+            </h3>
+            <p class="article-excerpt">
+              Why do pivots often create value? Because value (ρ_q) condenses at transition 
+              boundaries. The more σ accumulated, the more potential value at Δ.
+            </p>
+            <div class="article-tags">
+              <span class="article-tag">ρ_q</span>
+              <span class="article-tag">Value</span>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+      
+      <!-- Newsletter CTA -->
+      <div class="glass-1 card card-shadow" style="padding: var(--space-xl); margin-top: var(--space-2xl); text-align: center;">
+        <h3>New Articles Monthly</h3>
+        <p class="text-muted" style="margin: var(--space-md) auto; max-width: 500px;">
+          Each article translates one piece of the theory into practical application.
+          Real math, real examples, real frameworks.
+        </p>
+        <a href="../../index.html#contact" class="btn btn-articles">Get Notified →</a>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-text">
+        © 2025 Auto-Workspace-AI. Applied Business Field Theory.
+      </p>
+      <div class="footer-links">
+        <a href="../theory/index.html" class="footer-link">Theory</a>
+        <a href="index.html" class="footer-link">Articles</a>
+        <a href="../../simulators/index.html" class="footer-link">Simulators</a>
+        <a href="https://github.com/Sensei-Intent-Tensor" class="footer-link" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
