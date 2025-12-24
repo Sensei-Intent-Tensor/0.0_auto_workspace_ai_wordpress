@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Business Field Theory: Complete mathematical foundation. Axioms, derivations, equations, and proofs.">
+  
+  <title>Theory | Auto-Workspace-AI</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../css/design-system.css">
+  
+  <style>
+    .theory-hero {
+      padding: calc(80px + var(--space-2xl)) 0 var(--space-2xl);
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+        linear-gradient(180deg, var(--darker) 0%, var(--black) 100%);
+    }
+    
+    .book-card {
+      padding: var(--space-xl);
+      border-radius: 16px;
+      transition: transform var(--transition-base);
+      text-decoration: none;
+      display: block;
+    }
+    
+    .book-card:hover {
+      transform: translateY(-4px);
+    }
+    
+    .book-number {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--theory-primary);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .book-title {
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .book-description {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+    
+    .toc-section {
+      margin-top: var(--space-xl);
+    }
+    
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      border-radius: 8px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8);
+      transition: all var(--transition-fast);
+      border-left: 2px solid transparent;
+    }
+    
+    .toc-item:hover {
+      background: rgba(59, 130, 246, 0.1);
+      border-left-color: var(--theory-primary);
+      color: var(--white);
+    }
+    
+    .toc-number {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--theory-primary);
+      min-width: 60px;
+    }
+    
+    .equation-preview {
+      margin-top: var(--space-xl);
+      padding: var(--space-lg);
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      border-left: 3px solid var(--theory-primary);
+    }
+    
+    .quick-ref {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    
+    .quick-ref-item {
+      padding: var(--space-md);
+      background: rgba(59, 130, 246, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .quick-ref-symbol {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      color: var(--theory-primary);
+    }
+    
+    .quick-ref-name {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: var(--space-xs);
+    }
+  </style>
+</head>
+<body class="bg-base">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="nav-logo">
+        <span style="color: var(--theory-primary);">f</span>(AutoWorkspace)
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link" data-zone="theory" style="color: var(--theory-primary);">Theory</a></li>
+        <li><a href="../articles/index.html" class="nav-link" data-zone="articles">Articles</a></li>
+        <li><a href="../../simulators/index.html" class="nav-link" data-zone="simulators">Simulators</a></li>
+        <li><a href="../about/index.html" class="nav-link">About</a></li>
+        <li><a href="../../index.html#contact" class="btn btn-primary" style="padding: 0.5rem 1rem;">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Zone Strip -->
+  <div class="zone-strip zone-strip-theory" style="position: fixed; top: 60px; left: 0; right: 0; z-index: 999;"></div>
+
+  <!-- Hero -->
+  <section class="theory-hero">
+    <div class="container">
+      <p class="hero-tagline">Deep Research</p>
+      <h1 class="text-gradient-theory">Business Field Theory</h1>
+      <p class="hero-description">
+        The complete mathematical foundation. From first principles to computable equations.
+        No borrowed furniture — everything derived from four axioms.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container">
+      
+      <div class="grid" style="grid-template-columns: 2fr 1fr; gap: var(--space-xl);">
+        
+        <!-- Left: Book Structure -->
+        <div>
+          <h2 style="margin-bottom: var(--space-lg);">The Books</h2>
+          
+          <div class="flex flex-col gap-md">
+            
+            <!-- Book 0A -->
+            <a href="book-0a-axioms.html" class="book-card card card-theory glass-2 card-shadow">
+              <span class="book-number">BOOK 0A</span>
+              <h3 class="book-title">Collapse Axioms</h3>
+              <p class="book-description">
+                The four irreducible axioms. Pre-geometric foundation from which all quantities derive.
+                Φ exists, asymmetry permits, entropy accumulates, value emerges at boundaries.
+              </p>
+            </a>
+            
+            <!-- Book 0B -->
+            <a href="book-0b-ontology.html" class="book-card card card-theory glass-1 card-shadow">
+              <span class="book-number">BOOK 0B</span>
+              <h3 class="book-title">Derived Ontology</h3>
+              <p class="book-description">
+                Everything that must exist given the axioms. Configuration space, ordering, identity,
+                alignment, memory, lock, and transition — all derived, nothing assumed.
+              </p>
+            </a>
+            
+            <!-- Book 1 -->
+            <a href="book-1-primitives.html" class="book-card card card-theory glass-1 card-shadow">
+              <span class="book-number">BOOK 1</span>
+              <h3 class="book-title">Primitives</h3>
+              <p class="book-description">
+                Units, operations, and equations. Where the math becomes computable.
+                The Persistence Law, viability function, and value condensation.
+              </p>
+            </a>
+            
+            <!-- Book 2 (Coming) -->
+            <div class="book-card glass-0" style="opacity: 0.5;">
+              <span class="book-number">BOOK 2</span>
+              <h3 class="book-title">Dynamics</h3>
+              <p class="book-description">
+                Time emerges. Agents appear. Motion begins. <em>Coming soon.</em>
+              </p>
+            </div>
+            
+          </div>
+          
+          <!-- Key Equations Preview -->
+          <div class="equation-preview">
+            <h4 style="margin-bottom: var(--space-md); color: var(--theory-primary);">Core Equations</h4>
+            <div class="mono" style="line-height: 2;">
+              <div><span class="variable">σ</span>(n) = <span class="variable">σ</span>(n-1) + <span class="variable">σ</span><sub>θ</sub> · (1 - <span class="variable">𝒜</span>(n))</div>
+              <div><span class="variable">ℒ</span>(n) = λ · Tr(<span class="variable">M</span>(n)) / <span class="variable">𝒜</span>(n)²</div>
+              <div><span class="variable">V</span>(n) = <span class="variable">ℒ</span>(n) - <span class="variable">σ</span>(n)</div>
+              <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.1);">
+                <strong>Persist</strong> ⟺ <span class="variable">V</span> &gt; 0 &nbsp;&nbsp;|&nbsp;&nbsp;
+                <strong>Transition</strong> ⟺ <span class="variable">V</span> = 0
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Quick Reference -->
+        <div>
+          <h3 style="margin-bottom: var(--space-lg);">Symbol Reference</h3>
+          
+          <div class="quick-ref">
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">Φ</div>
+              <div class="quick-ref-name">Distinction Potential</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">σ</div>
+              <div class="quick-ref-name">Residue (Scar)</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">𝒜</div>
+              <div class="quick-ref-name">Alignment</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">ℒ</div>
+              <div class="quick-ref-name">Lock Capacity</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">M</div>
+              <div class="quick-ref-name">Memory</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">V</div>
+              <div class="quick-ref-name">Viability</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">Δ</div>
+              <div class="quick-ref-name">Transition</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">ρ<sub>q</sub></div>
+              <div class="quick-ref-name">Value (Charge)</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">n</div>
+              <div class="quick-ref-name">Recursion Depth</div>
+            </div>
+            <div class="quick-ref-item">
+              <div class="quick-ref-symbol">σ<sub>θ</sub></div>
+              <div class="quick-ref-name">Entropy Rate</div>
+            </div>
+          </div>
+          
+          <div style="margin-top: var(--space-xl);">
+            <a href="glossary.html" class="btn btn-theory" style="width: 100%;">Full Glossary →</a>
+          </div>
+          
+          <div style="margin-top: var(--space-xl);">
+            <h4 style="margin-bottom: var(--space-md);">Quick Links</h4>
+            <div class="flex flex-col gap-sm">
+              <a href="equations.html" class="toc-item">
+                <span class="toc-number">EQ</span>
+                <span>All Equations</span>
+              </a>
+              <a href="proofs.html" class="toc-item">
+                <span class="toc-number">PRF</span>
+                <span>Proofs</span>
+              </a>
+              <a href="predictions.html" class="toc-item">
+                <span class="toc-number">VAL</span>
+                <span>Testable Predictions</span>
+              </a>
+            </div>
+          </div>
+          
+          <div style="margin-top: var(--space-xl); padding: var(--space-lg); background: rgba(59, 130, 246, 0.1); border-radius: 12px;">
+            <h4 style="margin-bottom: var(--space-sm);">Source</h4>
+            <p class="text-sm text-muted">
+              All theory is derived from Intent Tensor Theory and maintained in our GitHub repository.
+            </p>
+            <a href="https://github.com/Sensei-Intent-Tensor/0.0._Executable_Physics" 
+               class="btn btn-primary" 
+               style="width: 100%; margin-top: var(--space-md);"
+               target="_blank">
+              View on GitHub →
+            </a>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-text">
+        © 2025 Auto-Workspace-AI. Applied Business Field Theory.
+      </p>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Theory</a>
+        <a href="../articles/index.html" class="footer-link">Articles</a>
+        <a href="../../simulators/index.html" class="footer-link">Simulators</a>
+        <a href="https://github.com/Sensei-Intent-Tensor" class="footer-link" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
