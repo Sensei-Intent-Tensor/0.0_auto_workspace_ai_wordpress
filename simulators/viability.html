@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Viability Simulator: Explore the persistence law. See how alignment, entropy, and lock interact in real-time.">
+  
+  <title>Viability Simulator | Auto-Workspace-AI</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/design-system.css">
+  
+  <style>
+    .sim-hero {
+      padding: calc(80px + var(--space-xl)) 0 var(--space-xl);
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+        linear-gradient(180deg, var(--darker) 0%, var(--black) 100%);
+    }
+    
+    .simulator-container {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: var(--space-xl);
+      margin-top: var(--space-xl);
+    }
+    
+    @media (max-width: 1024px) {
+      .simulator-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .controls-panel {
+      padding: var(--space-xl);
+      border-radius: 16px;
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+    
+    .control-group {
+      margin-bottom: var(--space-lg);
+    }
+    
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .control-name {
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    
+    .control-symbol {
+      font-family: var(--font-mono);
+      color: var(--sim-primary);
+    }
+    
+    .control-value {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--sim-primary);
+      background: rgba(139, 92, 246, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    
+    .slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--sim-primary);
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(139, 92, 246, 0.5);
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--sim-primary);
+      cursor: pointer;
+      border: none;
+    }
+    
+    .output-panel {
+      padding: var(--space-xl);
+      border-radius: 16px;
+    }
+    
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .metric-card {
+      padding: var(--space-lg);
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    
+    .metric-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: var(--space-xs);
+    }
+    
+    .metric-sigma .metric-value { color: #f87171; }
+    .metric-lock .metric-value { color: #4ade80; }
+    .metric-viability .metric-value { color: var(--sim-primary); }
+    
+    .chart-container {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .chart-title {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: var(--space-md);
+    }
+    
+    .chart {
+      width: 100%;
+      height: 300px;
+      position: relative;
+    }
+    
+    .chart-canvas {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .status-indicator {
+      padding: var(--space-lg);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .status-viable {
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      color: #4ade80;
+    }
+    
+    .status-warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      color: #fbbf24;
+    }
+    
+    .status-critical {
+      background: rgba(248, 113, 113, 0.1);
+      border: 1px solid rgba(248, 113, 113, 0.3);
+      color: #f87171;
+    }
+    
+    .equation-display {
+      padding: var(--space-lg);
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 12px;
+      border-left: 3px solid var(--sim-primary);
+      margin-top: var(--space-xl);
+    }
+    
+    .equation-row {
+      font-family: var(--font-mono);
+      padding: var(--space-sm) 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    
+    .equation-label {
+      min-width: 80px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+    }
+    
+    .transition-info {
+      margin-top: var(--space-lg);
+      padding: var(--space-md);
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="bg-base">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span style="color: var(--theory-primary);">f</span>(AutoWorkspace)
+      </a>
+      <ul class="nav-links">
+        <li><a href="../pages/theory/index.html" class="nav-link" data-zone="theory">Theory</a></li>
+        <li><a href="../pages/articles/index.html" class="nav-link" data-zone="articles">Articles</a></li>
+        <li><a href="index.html" class="nav-link" data-zone="simulators" style="color: var(--sim-primary);">Simulators</a></li>
+        <li><a href="../pages/about/index.html" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Zone Strip -->
+  <div class="zone-strip zone-strip-sim" style="position: fixed; top: 60px; left: 0; right: 0; z-index: 999;"></div>
+
+  <!-- Hero -->
+  <section class="sim-hero">
+    <div class="container">
+      <p class="hero-tagline" style="color: var(--sim-primary);">Interactive Simulator</p>
+      <h1 class="text-gradient-sim">Viability Simulator</h1>
+      <p class="hero-description">
+        Explore the persistence law in real-time. Adjust alignment, see how entropy accumulates,
+        watch viability change. Find when transition (Δ) becomes inevitable.
+      </p>
+    </div>
+  </section>
+
+  <!-- Simulator -->
+  <section class="section">
+    <div class="container">
+      <div class="simulator-container">
+        
+        <!-- Controls Panel -->
+        <div class="controls-panel glass-2 card card-simulator card-shadow">
+          <h3 style="margin-bottom: var(--space-lg);">Parameters</h3>
+          
+          <!-- Alignment Control -->
+          <div class="control-group">
+            <div class="control-label">
+              <span class="control-name">
+                <span class="control-symbol">𝒜</span> Alignment
+              </span>
+              <span class="control-value" id="alignment-value">0.70</span>
+            </div>
+            <input type="range" class="slider" id="alignment-slider" 
+                   min="0.1" max="1.0" step="0.01" value="0.70">
+            <p class="text-sm text-muted" style="margin-top: var(--space-xs);">
+              Strategy-execution coherence (0.1 = chaos, 1.0 = perfect)
+            </p>
+          </div>
+          
+          <!-- Base Entropy Rate Control -->
+          <div class="control-group">
+            <div class="control-label">
+              <span class="control-name">
+                <span class="control-symbol">σ̂</span> Base Rate
+              </span>
+              <span class="control-value" id="rate-value">1.00</span>
+            </div>
+            <input type="range" class="slider" id="rate-slider" 
+                   min="0.1" max="3.0" step="0.1" value="1.0">
+            <p class="text-sm text-muted" style="margin-top: var(--space-xs);">
+              Maximum entropy per recursion cycle
+            </p>
+          </div>
+          
+          <!-- Memory Retention Control -->
+          <div class="control-group">
+            <div class="control-label">
+              <span class="control-name">
+                <span class="control-symbol">μ</span> Retention
+              </span>
+              <span class="control-value" id="retention-value">0.80</span>
+            </div>
+            <input type="range" class="slider" id="retention-slider" 
+                   min="0.1" max="1.0" step="0.05" value="0.80">
+            <p class="text-sm text-muted" style="margin-top: var(--space-xs);">
+              Memory retention factor (institutional learning)
+            </p>
+          </div>
+          
+          <!-- Lock Coupling Control -->
+          <div class="control-group">
+            <div class="control-label">
+              <span class="control-name">
+                <span class="control-symbol">λ</span> Coupling
+              </span>
+              <span class="control-value" id="coupling-value">0.50</span>
+            </div>
+            <input type="range" class="slider" id="coupling-slider" 
+                   min="0.1" max="1.0" step="0.05" value="0.50">
+            <p class="text-sm text-muted" style="margin-top: var(--space-xs);">
+              Lock-memory coupling strength
+            </p>
+          </div>
+          
+          <!-- Recursion Depth Control -->
+          <div class="control-group">
+            <div class="control-label">
+              <span class="control-name">
+                <span class="control-symbol">n</span> Depth
+              </span>
+              <span class="control-value" id="depth-value">10</span>
+            </div>
+            <input type="range" class="slider" id="depth-slider" 
+                   min="1" max="50" step="1" value="10">
+            <p class="text-sm text-muted" style="margin-top: var(--space-xs);">
+              Recursion cycles to simulate
+            </p>
+          </div>
+          
+          <button onclick="runSimulation()" class="btn btn-sim" style="width: 100%; margin-top: var(--space-md);">
+            Run Simulation
+          </button>
+          
+        </div>
+        
+        <!-- Output Panel -->
+        <div class="output-panel glass-1 card card-shadow">
+          
+          <!-- Current Metrics -->
+          <h3 style="margin-bottom: var(--space-lg);">Results at n = <span id="current-n">10</span></h3>
+          
+          <div class="metrics-grid">
+            <div class="metric-card glass-0 metric-sigma">
+              <div class="metric-value" id="sigma-output">0.00</div>
+              <div class="metric-label">σ (Residue)</div>
+            </div>
+            <div class="metric-card glass-0 metric-lock">
+              <div class="metric-value" id="lock-output">0.00</div>
+              <div class="metric-label">ℒ (Lock)</div>
+            </div>
+            <div class="metric-card glass-0 metric-viability">
+              <div class="metric-value" id="viability-output">0.00</div>
+              <div class="metric-label">V (Viability)</div>
+            </div>
+          </div>
+          
+          <!-- Status Indicator -->
+          <div class="status-indicator status-viable" id="status-indicator">
+            ✓ VIABLE — Identity Persists
+          </div>
+          
+          <!-- Chart -->
+          <div class="chart-container">
+            <div class="chart-title">σ, ℒ, and V over recursion depth n</div>
+            <div class="chart">
+              <canvas id="chart-canvas" class="chart-canvas"></canvas>
+            </div>
+          </div>
+          
+          <!-- Live Equations -->
+          <div class="equation-display">
+            <h4 style="margin-bottom: var(--space-md); color: var(--sim-primary);">Live Equations</h4>
+            <div class="equation-row">
+              <span class="equation-label">Entropy:</span>
+              <span>σ(n) = <span id="eq-sigma">0</span></span>
+            </div>
+            <div class="equation-row">
+              <span class="equation-label">Memory:</span>
+              <span>M(n) = <span id="eq-memory">0</span></span>
+            </div>
+            <div class="equation-row">
+              <span class="equation-label">Lock:</span>
+              <span>ℒ(n) = <span id="eq-lock">0</span></span>
+            </div>
+            <div class="equation-row">
+              <span class="equation-label">Viability:</span>
+              <span>V(n) = ℒ - σ = <span id="eq-viability">0</span></span>
+            </div>
+            
+            <div class="transition-info">
+              <strong>Transition (Δ) at:</strong> n* = <span id="transition-depth">∞</span>
+              <p class="text-sm text-muted" style="margin-top: var(--space-xs);">
+                The recursion depth where σ = ℒ and restructuring becomes mandatory.
+              </p>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-text">
+        © 2025 Auto-Workspace-AI. Applied Business Field Theory.
+      </p>
+      <div class="footer-links">
+        <a href="../pages/theory/index.html" class="footer-link">Theory</a>
+        <a href="../pages/articles/index.html" class="footer-link">Articles</a>
+        <a href="index.html" class="footer-link">Simulators</a>
+        <a href="https://github.com/Sensei-Intent-Tensor" class="footer-link" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================
+    // VIABILITY SIMULATOR - BUSINESS FIELD THEORY
+    // ============================================
+    
+    // State
+    let params = {
+      alignment: 0.70,
+      baseRate: 1.0,
+      retention: 0.80,
+      coupling: 0.50,
+      depth: 10
+    };
+    
+    let results = {
+      sigma: [],
+      memory: [],
+      lock: [],
+      viability: [],
+      transitionDepth: Infinity
+    };
+    
+    // DOM Elements
+    const sliders = {
+      alignment: document.getElementById('alignment-slider'),
+      rate: document.getElementById('rate-slider'),
+      retention: document.getElementById('retention-slider'),
+      coupling: document.getElementById('coupling-slider'),
+      depth: document.getElementById('depth-slider')
+    };
+    
+    const values = {
+      alignment: document.getElementById('alignment-value'),
+      rate: document.getElementById('rate-value'),
+      retention: document.getElementById('retention-value'),
+      coupling: document.getElementById('coupling-value'),
+      depth: document.getElementById('depth-value')
+    };
+    
+    // Initialize sliders
+    Object.keys(sliders).forEach(key => {
+      sliders[key].addEventListener('input', (e) => {
+        const val = parseFloat(e.target.value);
+        if (key === 'depth') {
+          params.depth = Math.round(val);
+          values[key].textContent = params.depth;
+        } else if (key === 'alignment') {
+          params.alignment = val;
+          values[key].textContent = val.toFixed(2);
+        } else if (key === 'rate') {
+          params.baseRate = val;
+          values[key].textContent = val.toFixed(2);
+        } else if (key === 'retention') {
+          params.retention = val;
+          values[key].textContent = val.toFixed(2);
+        } else if (key === 'coupling') {
+          params.coupling = val;
+          values[key].textContent = val.toFixed(2);
+        }
+        runSimulation();
+      });
+    });
+    
+    // Simulation function
+    function runSimulation() {
+      const { alignment, baseRate, retention, coupling, depth } = params;
+      
+      // Reset results
+      results.sigma = [0];
+      results.memory = [0];
+      results.lock = [0];
+      results.viability = [0];
+      results.transitionDepth = Infinity;
+      
+      // Run simulation
+      for (let n = 1; n <= depth; n++) {
+        // σ(n) = σ(n-1) + σ_θ · (1 - 𝒜)
+        const deltaSigma = baseRate * (1 - alignment);
+        const sigma = results.sigma[n-1] + deltaSigma;
+        results.sigma.push(sigma);
+        
+        // M(n) = M(n-1) + μ · σ(n-1)
+        const memory = results.memory[n-1] + retention * results.sigma[n-1];
+        results.memory.push(memory);
+        
+        // ℒ(n) = λ · M(n) / 𝒜²
+        const lock = coupling * memory / (alignment * alignment);
+        results.lock.push(lock);
+        
+        // V(n) = ℒ(n) - σ(n)
+        const viability = lock - sigma;
+        results.viability.push(viability);
+        
+        // Check for transition
+        if (viability <= 0 && results.transitionDepth === Infinity) {
+          results.transitionDepth = n;
+        }
+      }
+      
+      updateDisplay();
+      drawChart();
+    }
+    
+    // Update display
+    function updateDisplay() {
+      const n = params.depth;
+      const sigma = results.sigma[n];
+      const lock = results.lock[n];
+      const viability = results.viability[n];
+      const memory = results.memory[n];
+      
+      // Update current n display
+      document.getElementById('current-n').textContent = n;
+      
+      // Update metrics
+      document.getElementById('sigma-output').textContent = sigma.toFixed(2);
+      document.getElementById('lock-output').textContent = lock.toFixed(2);
+      document.getElementById('viability-output').textContent = viability.toFixed(2);
+      
+      // Update equations
+      document.getElementById('eq-sigma').textContent = sigma.toFixed(3);
+      document.getElementById('eq-memory').textContent = memory.toFixed(3);
+      document.getElementById('eq-lock').textContent = lock.toFixed(3);
+      document.getElementById('eq-viability').textContent = viability.toFixed(3);
+      
+      // Update transition depth
+      document.getElementById('transition-depth').textContent = 
+        results.transitionDepth === Infinity ? '∞ (stable)' : results.transitionDepth;
+      
+      // Update status indicator
+      const statusEl = document.getElementById('status-indicator');
+      if (viability > lock * 0.3) {
+        statusEl.className = 'status-indicator status-viable';
+        statusEl.innerHTML = '✓ VIABLE — Identity Persists';
+      } else if (viability > 0) {
+        statusEl.className = 'status-indicator status-warning';
+        statusEl.innerHTML = '⚠ WARNING — Approaching Transition';
+      } else {
+        statusEl.className = 'status-indicator status-critical';
+        statusEl.innerHTML = '✗ TRANSITION — Δ Reached';
+      }
+    }
+    
+    // Draw chart
+    function drawChart() {
+      const canvas = document.getElementById('chart-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Set canvas size
+      canvas.width = canvas.offsetWidth * 2;
+      canvas.height = canvas.offsetHeight * 2;
+      ctx.scale(2, 2);
+      
+      const width = canvas.offsetWidth;
+      const height = canvas.offsetHeight;
+      const padding = 40;
+      
+      // Clear
+      ctx.fillStyle = 'transparent';
+      ctx.fillRect(0, 0, width, height);
+      
+      // Find max value for scaling
+      const allValues = [...results.sigma, ...results.lock];
+      const maxVal = Math.max(...allValues, 1) * 1.2;
+      
+      // Draw grid
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.lineWidth = 1;
+      
+      for (let i = 0; i <= 5; i++) {
+        const y = padding + (height - 2 * padding) * (i / 5);
+        ctx.beginPath();
+        ctx.moveTo(padding, y);
+        ctx.lineTo(width - padding, y);
+        ctx.stroke();
+      }
+      
+      // Draw axes labels
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = '10px Inter';
+      ctx.textAlign = 'right';
+      for (let i = 0; i <= 5; i++) {
+        const y = padding + (height - 2 * padding) * (i / 5);
+        const val = maxVal * (1 - i / 5);
+        ctx.fillText(val.toFixed(1), padding - 5, y + 3);
+      }
+      
+      // Draw lines
+      const drawLine = (data, color) => {
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        
+        for (let i = 0; i < data.length; i++) {
+          const x = padding + (width - 2 * padding) * (i / (data.length - 1));
+          const y = padding + (height - 2 * padding) * (1 - data[i] / maxVal);
+          
+          if (i === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+        ctx.stroke();
+      };
+      
+      // Draw σ (red)
+      drawLine(results.sigma, '#f87171');
+      
+      // Draw ℒ (green)
+      drawLine(results.lock, '#4ade80');
+      
+      // Draw V (purple, dashed)
+      ctx.setLineDash([5, 5]);
+      drawLine(results.viability, '#a78bfa');
+      ctx.setLineDash([]);
+      
+      // Draw transition line if exists
+      if (results.transitionDepth !== Infinity && results.transitionDepth <= params.depth) {
+        const x = padding + (width - 2 * padding) * (results.transitionDepth / params.depth);
+        ctx.strokeStyle = 'rgba(248, 113, 113, 0.5)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(x, padding);
+        ctx.lineTo(x, height - padding);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        
+        // Label
+        ctx.fillStyle = '#f87171';
+        ctx.font = '10px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText('Δ', x, padding - 5);
+      }
+      
+      // Legend
+      ctx.font = '11px Inter';
+      ctx.textAlign = 'left';
+      
+      ctx.fillStyle = '#f87171';
+      ctx.fillRect(width - 100, 10, 12, 12);
+      ctx.fillText('σ', width - 85, 20);
+      
+      ctx.fillStyle = '#4ade80';
+      ctx.fillRect(width - 100, 28, 12, 12);
+      ctx.fillText('ℒ', width - 85, 38);
+      
+      ctx.fillStyle = '#a78bfa';
+      ctx.fillRect(width - 100, 46, 12, 12);
+      ctx.fillText('V', width - 85, 56);
+    }
+    
+    // Initial run
+    runSimulation();
+    
+    // Handle resize
+    window.addEventListener('resize', drawChart);
+  </script>
+
+</body>
+</html>
