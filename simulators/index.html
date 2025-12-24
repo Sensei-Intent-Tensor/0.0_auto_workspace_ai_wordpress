@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Business Field Theory Simulators. Explore the math yourself. Real-time calculations.">
+  
+  <title>Simulators | Auto-Workspace-AI</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/design-system.css">
+  
+  <style>
+    .sim-hero {
+      padding: calc(80px + var(--space-2xl)) 0 var(--space-2xl);
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+        linear-gradient(180deg, var(--darker) 0%, var(--black) 100%);
+    }
+    
+    .sim-card {
+      padding: var(--space-xl);
+      border-radius: 16px;
+      text-decoration: none;
+      display: block;
+      transition: transform var(--transition-base);
+    }
+    
+    .sim-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    .sim-icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .sim-title {
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .sim-description {
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .sim-tags {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    
+    .sim-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      background: rgba(139, 92, 246, 0.2);
+      border-radius: 4px;
+      color: var(--sim-primary);
+    }
+    
+    .coming-soon {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
+    .coming-badge {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-base">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span style="color: var(--theory-primary);">f</span>(AutoWorkspace)
+      </a>
+      <ul class="nav-links">
+        <li><a href="../pages/theory/index.html" class="nav-link" data-zone="theory">Theory</a></li>
+        <li><a href="../pages/articles/index.html" class="nav-link" data-zone="articles">Articles</a></li>
+        <li><a href="index.html" class="nav-link" data-zone="simulators" style="color: var(--sim-primary);">Simulators</a></li>
+        <li><a href="../pages/about/index.html" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Zone Strip -->
+  <div class="zone-strip zone-strip-sim" style="position: fixed; top: 60px; left: 0; right: 0; z-index: 999;"></div>
+
+  <!-- Hero -->
+  <section class="sim-hero">
+    <div class="container">
+      <p class="hero-tagline" style="color: var(--sim-primary);">Interactive Tools</p>
+      <h1 class="text-gradient-sim">Simulators</h1>
+      <p class="hero-description">
+        Don't just read the equations — run them. Manipulate variables, see real-time calculations,
+        understand the math by playing with it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Simulators Grid -->
+  <section class="section">
+    <div class="container">
+      
+      <div class="grid grid-2" style="gap: var(--space-xl);">
+        
+        <!-- Viability Simulator -->
+        <a href="viability.html" class="sim-card card card-simulator glass-2 card-shadow">
+          <div class="sim-icon">📊</div>
+          <h3 class="sim-title">Viability Simulator</h3>
+          <p class="sim-description">
+            Explore the persistence law. See how alignment, entropy rate, and memory 
+            interact to determine when transition (Δ) becomes inevitable.
+          </p>
+          <div class="sim-tags">
+            <span class="sim-tag">σ</span>
+            <span class="sim-tag">ℒ</span>
+            <span class="sim-tag">V</span>
+            <span class="sim-tag">Δ</span>
+          </div>
+        </a>
+        
+        <!-- Alignment Lab -->
+        <div class="sim-card card card-simulator glass-1 card-shadow coming-soon" style="position: relative;">
+          <span class="coming-badge">Coming Soon</span>
+          <div class="sim-icon">🎯</div>
+          <h3 class="sim-title">Alignment Lab</h3>
+          <p class="sim-description">
+            Decompose alignment into its components. See how strategy-execution gap 
+            affects entropy accumulation rate.
+          </p>
+          <div class="sim-tags">
+            <span class="sim-tag">𝒜</span>
+            <span class="sim-tag">∇Φ</span>
+            <span class="sim-tag">σ_θ</span>
+          </div>
+        </div>
+        
+        <!-- Transition Predictor -->
+        <div class="sim-card card card-simulator glass-1 card-shadow coming-soon" style="position: relative;">
+          <span class="coming-badge">Coming Soon</span>
+          <div class="sim-icon">⚡</div>
+          <h3 class="sim-title">Transition Predictor</h3>
+          <p class="sim-description">
+            Input your current metrics. Get a prediction for when Δ will occur 
+            and what value (ρ_q) will condense.
+          </p>
+          <div class="sim-tags">
+            <span class="sim-tag">n*</span>
+            <span class="sim-tag">ρ_q</span>
+            <span class="sim-tag">κ</span>
+          </div>
+        </div>
+        
+        <!-- Lock Calculator -->
+        <div class="sim-card card card-simulator glass-1 card-shadow coming-soon" style="position: relative;">
+          <span class="coming-badge">Coming Soon</span>
+          <div class="sim-icon">🔒</div>
+          <h3 class="sim-title">Lock Calculator</h3>
+          <p class="sim-description">
+            Calculate your organizational lock capacity based on memory structure 
+            and alignment. See your resilience buffer.
+          </p>
+          <div class="sim-tags">
+            <span class="sim-tag">ℒ</span>
+            <span class="sim-tag">M</span>
+            <span class="sim-tag">λ</span>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Custom Simulator CTA -->
+      <div class="glass-1 card card-shadow" style="padding: var(--space-xl); margin-top: var(--space-2xl); text-align: center;">
+        <h3>Need a Custom Simulator?</h3>
+        <p class="text-muted" style="margin: var(--space-md) auto; max-width: 600px;">
+          We build bespoke interactive tools tailored to your business. 
+          Your inputs, your logic, your equations. Simulators can be incredibly 
+          valuable — both as internal decision tools and customer-facing products.
+        </p>
+        <a href="../index.html#contact" class="btn btn-sim">Let's Build One →</a>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-text">
+        © 2025 Auto-Workspace-AI. Applied Business Field Theory.
+      </p>
+      <div class="footer-links">
+        <a href="../pages/theory/index.html" class="footer-link">Theory</a>
+        <a href="../pages/articles/index.html" class="footer-link">Articles</a>
+        <a href="index.html" class="footer-link">Simulators</a>
+        <a href="https://github.com/Sensei-Intent-Tensor" class="footer-link" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
