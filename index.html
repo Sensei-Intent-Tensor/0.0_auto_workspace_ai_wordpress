@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Auto-Workspace-AI: The Mathematical Architecture of Business Operations. Real equations. Real definitions. No hand-waving.">
+  <meta name="keywords" content="business field theory, operational mathematics, business equations, intent tensor theory, organizational physics">
+  
+  <title>Auto-Workspace-AI | The Math of Business</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/design-system.css">
+  
+  <style>
+    /* Page-specific styles */
+    .hero-equation-container {
+      margin: var(--space-xl) 0;
+    }
+    
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+    
+    .zone-card {
+      padding: var(--space-xl);
+      border-radius: 16px;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+    
+    .zone-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    .zone-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .zone-title {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .zone-description {
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .philosophy-section {
+      position: relative;
+    }
+    
+    .philosophy-card {
+      padding: var(--space-xl);
+      border-radius: 16px;
+    }
+    
+    .definition-list {
+      list-style: none;
+      margin-top: var(--space-lg);
+    }
+    
+    .definition-item {
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .definition-term {
+      font-weight: 600;
+      color: var(--theory-primary);
+      font-family: var(--font-mono);
+    }
+    
+    .definition-meaning {
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: var(--space-xs);
+    }
+    
+    .cta-section {
+      text-align: center;
+      padding: var(--space-2xl) 0;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--space-lg);
+    }
+    
+    /* Floating equation particles - decorative */
+    .equation-particle {
+      position: absolute;
+      font-family: var(--font-mono);
+      color: rgba(59, 130, 246, 0.2);
+      font-size: 1rem;
+      pointer-events: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="bg-base">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span style="color: var(--theory-primary);">f</span>(AutoWorkspace)
+      </a>
+      <ul class="nav-links">
+        <li><a href="pages/theory/index.html" class="nav-link" data-zone="theory">Theory</a></li>
+        <li><a href="pages/articles/index.html" class="nav-link" data-zone="articles">Articles</a></li>
+        <li><a href="simulators/index.html" class="nav-link" data-zone="simulators">Simulators</a></li>
+        <li><a href="pages/about/index.html" class="nav-link">About</a></li>
+        <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1rem;">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <p class="hero-tagline animate-fade-in-up">Business Field Theory</p>
+      <h1 class="hero-title text-gradient animate-fade-in-up animate-delay-1">
+        The Mathematical Architecture<br>of Business Operations
+      </h1>
+      <p class="hero-description animate-fade-in-up animate-delay-2">
+        Real equations. Real definitions. No hand-waving.<br>
+        We reduce business mechanics to computable mathematics.
+      </p>
+      
+      <!-- Master Equation Display -->
+      <div class="hero-equation-container animate-fade-in-up animate-delay-3">
+        <div class="equation-hero glass-2 card card-theory">
+          <span class="text-muted" style="font-size: 0.875rem; display: block; margin-bottom: var(--space-md);">The Persistence Law</span>
+          <span class="variable">Identity</span> persists ⟺ 
+          <span class="variable">σ</span>(n) &lt; <span class="variable">ℒ</span>(n)
+          <span class="text-muted" style="font-size: 0.875rem; display: block; margin-top: var(--space-md);">
+            Accumulated inefficiency must remain below organizational capacity
+          </span>
+        </div>
+      </div>
+      
+      <div class="flex gap-md animate-fade-in-up animate-delay-4">
+        <a href="pages/theory/index.html" class="btn btn-theory">Explore the Math →</a>
+        <a href="simulators/index.html" class="btn btn-primary">Try a Simulator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zone Strip -->
+  <div class="zone-strip zone-strip-theory"></div>
+
+  <!-- What We Do Section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="max-width: 700px; margin: 0 auto var(--space-xl);">
+        <h2 class="text-gradient">Not Consulting. Not Software.<br>Applied Mathematics.</h2>
+        <p class="text-muted text-lg" style="margin-top: var(--space-md);">
+          We derive equations that describe business operations the way physics describes motion.
+          Then we build tools that let you compute answers instead of guessing.
+        </p>
+      </div>
+      
+      <!-- Zone Cards -->
+      <div class="zones-grid">
+        
+        <!-- Theory Zone -->
+        <a href="pages/theory/index.html" class="zone-card card card-theory glass-2 card-shadow" style="text-decoration: none;">
+          <div class="zone-icon">📐</div>
+          <h3 class="zone-title text-gradient-theory">Theory</h3>
+          <p class="zone-description">
+            The axiomatic foundation. Four axioms that derive all business quantities. 
+            Proofs, equations, and the complete mathematical framework.
+          </p>
+          <span class="btn btn-theory" style="width: 100%;">Read the Axioms →</span>
+        </a>
+        
+        <!-- Articles Zone -->
+        <a href="pages/articles/index.html" class="zone-card card card-articles glass-2 card-shadow" style="text-decoration: none;">
+          <div class="zone-icon">🔥</div>
+          <h3 class="zone-title text-gradient-articles">Articles</h3>
+          <p class="zone-description">
+            Applied insights. How the math translates to real business decisions.
+            Case studies, breakdowns, and actionable frameworks.
+          </p>
+          <span class="btn btn-articles" style="width: 100%;">Read Articles →</span>
+        </a>
+        
+        <!-- Simulators Zone -->
+        <a href="simulators/index.html" class="zone-card card card-simulator glass-2 card-shadow" style="text-decoration: none;">
+          <div class="zone-icon">⚡</div>
+          <h3 class="zone-title text-gradient-sim">Simulators</h3>
+          <p class="zone-description">
+            Interactive tools. Manipulate the variables yourself.
+            See the equations compute in real-time.
+          </p>
+          <span class="btn btn-sim" style="width: 100%;">Launch Simulators →</span>
+        </a>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="section philosophy-section">
+    <div class="container">
+      <div class="philosophy-card glass-1 card card-shadow" style="max-width: 900px; margin: 0 auto;">
+        <h2 style="margin-bottom: var(--space-md);">Why Math?</h2>
+        <p class="text-lg" style="color: rgba(255,255,255,0.8);">
+          Business advice is full of hand-waving. "Improve culture." "Align strategy." "Increase efficiency."
+          These words mean nothing without <strong>definitions</strong> and <strong>measurement</strong>.
+        </p>
+        <p style="color: rgba(255,255,255,0.6); margin-top: var(--space-md);">
+          We don't claim to know better. We claim to <em>define</em> better. When you have an equation,
+          you can compute. When you can compute, you can predict. When you can predict, you can optimize.
+        </p>
+        
+        <ul class="definition-list">
+          <li class="definition-item">
+            <span class="definition-term">σ (sigma)</span>
+            <span class="definition-meaning">Accumulated organizational residue — technical debt, process debt, coordination overhead. The scar tissue of misalignment.</span>
+          </li>
+          <li class="definition-item">
+            <span class="definition-term">ℒ (lock)</span>
+            <span class="definition-meaning">Organizational capacity to absorb stress without restructuring. How much σ can you carry before something breaks?</span>
+          </li>
+          <li class="definition-item">
+            <span class="definition-term">𝒜 (alignment)</span>
+            <span class="definition-meaning">Degree of strategy-execution coherence. When 𝒜 = 1, operations match intent perfectly. Most organizations hover around 0.4-0.6.</span>
+          </li>
+          <li class="definition-item">
+            <span class="definition-term">Δ (delta)</span>
+            <span class="definition-meaning">Transition event — pivot, restructure, transformation. The moment σ = ℒ and change becomes mandatory.</span>
+          </li>
+        </ul>
+        
+        <div style="margin-top: var(--space-xl);">
+          <a href="pages/theory/glossary.html" class="btn btn-primary">Full Glossary →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Stack Section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--space-xl);">
+        <h2 class="text-gradient">The Knowledge Stack</h2>
+        <p class="text-muted" style="max-width: 600px; margin: var(--space-md) auto 0;">
+          From foundational axioms to social posts. Each layer builds on the one below.
+        </p>
+      </div>
+      
+      <div class="stack-container" style="max-width: 800px; margin: 0 auto;">
+        
+        <!-- Deepest layer -->
+        <div class="stack-pane stack-pane-0" style="padding: var(--space-lg); margin-bottom: var(--space-md);">
+          <div class="flex items-center gap-md">
+            <span style="color: var(--theory-primary); font-size: 1.5rem;">📐</span>
+            <div>
+              <h4 style="color: var(--theory-primary);">Theory (Deep Research)</h4>
+              <p class="text-sm text-muted">Axioms, proofs, derivations. The mathematical foundation.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mid layer -->
+        <div class="stack-pane stack-pane-1" style="padding: var(--space-lg); margin-bottom: var(--space-md); margin-left: var(--space-lg);">
+          <div class="flex items-center gap-md">
+            <span style="color: var(--articles-primary); font-size: 1.5rem;">🔥</span>
+            <div>
+              <h4 style="color: var(--articles-primary);">Articles (Applied Insights)</h4>
+              <p class="text-sm text-muted">How the math applies to real business problems.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Front layer -->
+        <div class="stack-pane stack-pane-2" style="padding: var(--space-lg); margin-left: calc(var(--space-lg) * 2);">
+          <div class="flex items-center gap-md">
+            <span style="color: var(--social-primary); font-size: 1.5rem;">📱</span>
+            <div>
+              <h4 style="color: var(--social-primary);">Social (Distribution)</h4>
+              <p class="text-sm text-muted">Key insights extracted for broader reach.</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="glass-2 card card-shadow" style="padding: var(--space-2xl); border-radius: 24px; max-width: 800px; margin: 0 auto;">
+        <h2>Ready to Stop Guessing?</h2>
+        <p class="text-muted text-lg" style="margin-top: var(--space-md);">
+          Start with the theory. Try a simulator. Or let's talk about your specific problem.
+        </p>
+        <div class="cta-buttons">
+          <a href="pages/theory/axioms.html" class="btn btn-theory">Start with Axioms</a>
+          <a href="simulators/viability.html" class="btn btn-sim">Try Viability Simulator</a>
+          <a href="#contact" class="btn btn-primary">Book a Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="text-center" style="max-width: 600px; margin: 0 auto;">
+        <h2>Let's Talk</h2>
+        <p class="text-muted" style="margin-top: var(--space-md);">
+          Whether you want to understand the math, apply it to your organization, 
+          or build custom simulators — we're here.
+        </p>
+        <div class="flex gap-md justify-center" style="margin-top: var(--space-xl);">
+          <a href="mailto:hello@auto-workspace-ai.com" class="btn btn-primary">
+            📧 Email Us
+          </a>
+          <a href="https://github.com/Sensei-Intent-Tensor" class="btn btn-primary" target="_blank">
+            💻 GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-text">
+        © 2025 Auto-Workspace-AI. Applied Business Field Theory.
+      </p>
+      <div class="footer-links">
+        <a href="pages/theory/index.html" class="footer-link">Theory</a>
+        <a href="pages/articles/index.html" class="footer-link">Articles</a>
+        <a href="simulators/index.html" class="footer-link">Simulators</a>
+        <a href="https://github.com/Sensei-Intent-Tensor" class="footer-link" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
