@@ -17,7 +17,7 @@
     "type": "github",
     "config": {
       "owner": "Sensei-Intent-Tensor",
-      "repo_name": "0.0_auto_workspace_ai_wordpress",
+      "repo_name": "0.0_auto_workspace_ai_website",
       "production_branch": "main",
       "pr_comments_enabled": false,
       "deployments_enabled": true
