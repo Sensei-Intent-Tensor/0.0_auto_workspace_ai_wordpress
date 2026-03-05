@@ -1,0 +1,27 @@
+{
+  "project_name": "auto-workspace-ai",
+  "account_id": "feec6b836b9784535cf7128856f2349e",
+  "production_branch": "main",
+  "root_directory": "2.0_site",
+  "build_config": {
+    "build_command": "",
+    "destination_dir": "",
+    "root_dir": "2.0_site"
+  },
+  "deployment_configs": {
+    "production": {
+      "environment_variables": {}
+    }
+  },
+  "source": {
+    "type": "github",
+    "config": {
+      "owner": "Sensei-Intent-Tensor",
+      "repo_name": "0.0_auto_workspace_ai_wordpress",
+      "production_branch": "main",
+      "pr_comments_enabled": false,
+      "deployments_enabled": true
+    }
+  },
+  "custom_domains": ["auto-workspace-ai.com", "www.auto-workspace-ai.com"]
+}
