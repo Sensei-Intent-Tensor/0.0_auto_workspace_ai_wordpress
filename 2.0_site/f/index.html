@@ -4,23 +4,132 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Auto-Workspace-AI",
-  "description": "Mathematical business automation frameworks. We build website and app integrations derived from Intent Tensor Theory.",
+  "alternateName": "AWA",
+  "description": "We build custom websites and app integrations for businesses using mathematical automation frameworks. Available 24/7. Call or email to hire us.",
+  "slogan": "We are on when the business world is on.",
   "url": "https://auto-workspace-ai.com",
   "telephone": "+16624209044",
   "email": "frontdesk@auto-workspace-ai.com",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+16624209044",
-    "email": "frontdesk@auto-workspace-ai.com",
-    "contactType": "Business Inquiries",
-    "availableLanguage": "English",
-    "hoursAvailable": "Mo-Su 00:00-24:00"
+  "founder": {
+    "@type": "Person",
+    "name": "Achilles",
+    "jobTitle": "Founder",
+    "worksFor": { "@type": "Organization", "name": "Auto-Workspace-AI" }
   },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+16624209044",
+      "contactType": "Sales",
+      "contactOption": "TollFree",
+      "availableLanguage": "English",
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "frontdesk@auto-workspace-ai.com",
+      "contactType": "Customer Support",
+      "availableLanguage": "English",
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    }
+  ],
+  "potentialAction": [
+    {
+      "@type": "ReserveAction",
+      "name": "Call to hire us",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "tel:+16624209044",
+        "actionPlatform": [
+          "http://schema.org/MobileWebPlatform",
+          "http://schema.org/DesktopWebPlatform"
+        ]
+      },
+      "result": {
+        "@type": "Reservation",
+        "name": "Business consultation"
+      }
+    },
+    {
+      "@type": "CommunicateAction",
+      "name": "Email to hire us",
+      "target": "mailto:frontdesk@auto-workspace-ai.com?subject=Website%20%26%20App%20Integration%20Inquiry"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AWA Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Website Development",
+          "description": "Full website design and deployment for businesses."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "App Integration",
+          "description": "Business app integrations connecting CRM, marketing, and operations."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Business Automation",
+          "description": "Invoice automation, workflow automation, and AI-powered operations platforms."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "BusinessGPT Platform",
+          "description": "AI co-pilot for executive departments: CIO, CEO, CHRO, COO, CFO.",
+          "url": "https://apps.auto-workspace-ai.com/business-gpt-pro"
+        }
+      }
+    ]
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Worldwide"
+  },
+  "knowsAbout": [
+    "Business Automation",
+    "Website Development",
+    "App Integration",
+    "AI Business Tools",
+    "Invoice Automation",
+    "CRM Integration",
+    "Marketing Automation",
+    "Mathematical Business Frameworks"
+  ],
   "sameAs": [
     "https://github.com/Sensei-Intent-Tensor",
+    "https://github.com/intent-tensor-theory",
     "https://apps.auto-workspace-ai.com/business-gpt-pro"
   ],
-  "areaServed": "Worldwide",
   "priceRange": "$$"
 }
 </script>

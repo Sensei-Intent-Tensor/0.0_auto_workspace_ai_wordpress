@@ -51,3 +51,6 @@ User-agent: MJ12bot
 Disallow: /
 
 Sitemap: https://auto-workspace-ai.com/sitemap.xml
+
+# Machine-readable identity schema (JSON-LD)
+# Schema: https://auto-workspace-ai.com/schema.json
