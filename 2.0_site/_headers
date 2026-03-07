@@ -1,0 +1,33 @@
+# Cloudflare Pages Cache Headers
+# Fixes the 4.68% cache hit rate — tells the edge to hold everything
+
+# HTML pages — cache 1 hour at edge, serve stale up to 24h
+/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Static assets — cache 30 days immutable
+/*.css
+  Cache-Control: public, max-age=2592000, immutable
+/*.js
+  Cache-Control: public, max-age=2592000, immutable
+/*.png
+  Cache-Control: public, max-age=2592000, immutable
+/*.jpg
+  Cache-Control: public, max-age=2592000, immutable
+/*.jpeg
+  Cache-Control: public, max-age=2592000, immutable
+/*.svg
+  Cache-Control: public, max-age=2592000, immutable
+/*.ico
+  Cache-Control: public, max-age=2592000, immutable
+/*.woff2
+  Cache-Control: public, max-age=2592000, immutable
+
+# robots.txt and sitemap — 1 hour
+/robots.txt
+  Cache-Control: public, max-age=3600
+/sitemap.xml
+  Cache-Control: public, max-age=86400
